@@ -29,6 +29,9 @@
     <ClCompile Include="Body.cpp">
       <Filter>Bodies</Filter>
     </ClCompile>
+    <ClCompile Include="Seek.cpp">
+      <Filter>Steering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
@@ -61,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="Body.h">
       <Filter>Bodies</Filter>
+    </ClInclude>
+    <ClInclude Include="Seek.h">
+      <Filter>Steering</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

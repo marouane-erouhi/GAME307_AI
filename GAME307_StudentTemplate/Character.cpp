@@ -1,4 +1,5 @@
 #include "Character.h"
+#include <Seek.h>
 
 bool Character::OnCreate(Scene* scene_)
 {
@@ -79,6 +80,8 @@ void Character::Update(float deltaTime)
 	// (often the target is the Player)
 
 	// using the target, calculate and set values in the overall steering output
+	SteeringBehaviour* steering_algo = new Seek(body, scene->game->getPlayer());
+	steering = steering_algo->getSteering();
 
 	// apply the steering to the equations of motion
 	body->Update(deltaTime, steering);
