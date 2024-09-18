@@ -1,13 +1,13 @@
 #pragma once
 #include "SteeringBehaviour.h"
-class Seek : public SteeringBehaviour {
+class Flee : public SteeringBehaviour {
 
 protected:
 	const Body* target;
 
 public:
-	Seek(const Body* npc_, const Body* target_);
-	virtual ~Seek();
+	Flee(const Body* npc_, const Body* target_);
+	virtual ~Flee();
 
 	SteeringOutput* getSteering();
 

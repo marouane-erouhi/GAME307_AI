@@ -32,6 +32,9 @@
     <ClCompile Include="Seek.cpp">
       <Filter>Steering</Filter>
     </ClCompile>
+    <ClCompile Include="Flee.cpp">
+      <Filter>Steering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
@@ -66,6 +69,12 @@
       <Filter>Bodies</Filter>
     </ClInclude>
     <ClInclude Include="Seek.h">
+      <Filter>Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="Arrive.h">
+      <Filter>Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="Flee.h">
       <Filter>Steering</Filter>
     </ClInclude>
   </ItemGroup>
