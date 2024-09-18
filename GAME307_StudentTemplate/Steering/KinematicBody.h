@@ -4,14 +4,12 @@
 #include "Body.h"
 #include "SteeringOutput.h"
 
-class KinematicBody :
-		public Body
+class KinematicBody : public Body
 {
 protected:
 
 public:
-	KinematicBody() : Body{}
-	{}
+	KinematicBody() : Body{} {}
 
 	KinematicBody(
 		Vec3 pos_, Vec3 vel_, Vec3 accel_,
