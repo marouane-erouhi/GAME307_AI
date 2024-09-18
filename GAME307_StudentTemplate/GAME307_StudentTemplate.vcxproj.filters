@@ -35,7 +35,9 @@
     <ClCompile Include="Flee.cpp">
       <Filter>Steering</Filter>
     </ClCompile>
-    <ClCompile Include="Arrive.cpp" />
+    <ClCompile Include="Arrive.cpp">
+      <Filter>Steering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />

@@ -24,6 +24,7 @@
     <ProjectGuid>{43aaaf36-7c39-45d1-91c7-aae5f601f05f}</ProjectGuid>
     <RootNamespace>GAME307StudentTemplate</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>GAME307_AI</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
