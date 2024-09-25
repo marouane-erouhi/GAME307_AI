@@ -16,33 +16,31 @@ Arrive::~Arrive() {
 }
 
 SteeringOutput* Arrive::getSteering() {
-	// get distance from target
-	float distance = VMath::distance(npc->getPos(), target->getPos());
+	SteeringOutput* out = new SteeringOutput();
+	Vec3 dir = target->getPos() - npc->getPos();
+	float distance = VMath::mag(dir);
 
-	printf("Distance: %d.2\n", distance);
-
-	// arrived
-	if (distance <= targetRadius) {
-		result->linear = Vec3();
-		result->angular = 0;
-
-		cout << "Arrived\n";
-
-		return result;
+	if (distance < targetRadius) {
+		// arrived
+		return nullptr;
 	}
 
-	result->linear = target->getPos() - npc->getPos();
-
-	result->linear = VMath::normalize(result->linear);
-	result->linear *= npc->getMaxAcceleration();
-	result->angular = 0;
-
-	// close enough to slow down
-	if (distance < slowRadius) {
-		//result->linear = npc->getMaxAcceleration() * (1 - timeToTraget);
-		result->linear *= (1 - timeToTraget);
+	float targetSpeed = 0.0f;
+	if (distance > slowRadius) {
+		// max speed
+		targetSpeed = npc->getMaxSpeed();
+	} else {
+		// within slow radius
+		targetSpeed = npc->getMaxSpeed() * distance / slowRadius;
 	}
 
+	Vec3 targetVel = VMath::normalize(Vec3(dir)) * targetSpeed;
+	out->linear = (targetVel - npc->getVel()) / timeToTraget;
 
-	return result;
+	// clip to max acc if too high
+	if (VMath::mag(out->linear) > npc->getMaxAcceleration()) {
+		out->linear = VMath::normalize(out->linear) * npc->getMaxAcceleration();
+	}
+	out->angular = 0.0f;
+	return out;
 }

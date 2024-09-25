@@ -19,7 +19,7 @@ bool Character::OnCreate(Scene* scene_)
 		float maxRotation = 2.0f;
 		float maxAngular = 10.0f;
 		body = new KinematicBody(
-			Vec3(10.0f, 5.0f, 0), Vec3(0, 0, 0), Vec3(0, 0, 0), 1.0f,
+			Vec3(1.0f, 5.0f, 0), Vec3(0, 0, 0), Vec3(0, 0, 0), 1.0f,
 			radius,
 			orientation,
 			rotation,
@@ -82,7 +82,7 @@ void Character::Update(float deltaTime)
 	// (often the target is the Player)
 
 	// using the target, calculate and set values in the overall steering output
-	SteeringBehaviour* steering_algo = new Arrive(body, scene->game->getPlayer(), 0.2f,1.0f, 0.1f);
+	SteeringBehaviour* steering_algo = new Arrive(body, scene->game->getPlayer(), 1.0f,3.0f, 0.1f);
 
 	steering = steering_algo->getSteering();
 
