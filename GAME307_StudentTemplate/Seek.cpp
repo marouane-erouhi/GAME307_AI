@@ -14,8 +14,7 @@ SteeringOutput* Seek::getSteering() {
 	// get dir to target
 	result->linear = target->getPos() - npc->getPos();
 
-	result->linear = VMath::normalize(result->linear);
-	result->linear *= npc->getMaxAcceleration();
+	result->linear = VMath::normalize(result->linear) * npc->getMaxAcceleration();
 	result->angular = 0;
 
 	return result;

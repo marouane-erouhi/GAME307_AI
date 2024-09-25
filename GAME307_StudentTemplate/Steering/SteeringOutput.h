@@ -10,7 +10,7 @@ public:
 	// Yes these are public! 
 	// The steering algorithms will be creating instances and then setting the values.
 	// There might be a better way, but I can't think of it right now.
-
+	/// Kinematic steering output -- which mean these are accelerations
 	Vec3 linear;
 	float angular;
 
