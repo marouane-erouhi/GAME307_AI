@@ -38,6 +38,10 @@
     <ClCompile Include="Arrive.cpp">
       <Filter>Steering</Filter>
     </ClCompile>
+    <ClCompile Include="Scene2.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
@@ -80,6 +84,15 @@
     <ClInclude Include="Flee.h">
       <Filter>Steering</Filter>
     </ClInclude>
+    <ClInclude Include="Scene2.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>PathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>PathFinding</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">
@@ -93,6 +106,9 @@
     </Filter>
     <Filter Include="Bodies">
       <UniqueIdentifier>{833a2e4a-4fb8-4beb-8d72-c6567f42e7b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PathFinding">
+      <UniqueIdentifier>{c07e9417-289c-4e7c-a510-66ddbde9c962}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

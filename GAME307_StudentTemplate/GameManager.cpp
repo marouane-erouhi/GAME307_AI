@@ -1,5 +1,6 @@
 #include "GameManager.h"
 #include "Scene1.h"
+#include "Scene2.h"
 
 GameManager::GameManager() {
 	windowPtr = nullptr;
@@ -37,7 +38,7 @@ bool GameManager::OnCreate() {
 
     // select scene for specific assignment
 
-    currentScene = new Scene1(windowPtr->GetSDL_Window(), this);
+    currentScene = new Scene2(windowPtr->GetSDL_Window(), this);
     
     // create player
     float mass = 1.0f;
@@ -202,8 +203,11 @@ void GameManager::LoadScene( int i )
         case 1:
             currentScene = new Scene1( windowPtr->GetSDL_Window(), this);
             break;
+        case 2:
+            currentScene = new Scene2(windowPtr->GetSDL_Window(), this);
+            break;
         default:
-            currentScene = new Scene1( windowPtr->GetSDL_Window(), this );
+            currentScene = new Scene2( windowPtr->GetSDL_Window(), this );
             break;
     }
     // using ValidateCurrentScene() to safely run OnCreate
