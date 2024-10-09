@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Align.cpp" />
     <ClCompile Include="Arrive.cpp" />
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="Character.cpp" />

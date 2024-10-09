@@ -7,7 +7,7 @@ Arrive::Arrive(const Body* npc_, const Body* target_, float targetRadius_, float
 	target = target_;
 	targetRadius = targetRadius_;
 	slowRadius = slowRadius_;
-	timeToTraget = timeToTarget_;
+	timeToTarget = timeToTarget_;
 }
 
 Arrive::~Arrive() {
@@ -35,7 +35,7 @@ SteeringOutput* Arrive::getSteering() {
 	}
 
 	Vec3 targetVel = VMath::normalize(Vec3(dir)) * targetSpeed;
-	out->linear = (targetVel - npc->getVel()) / timeToTraget;
+	out->linear = (targetVel - npc->getVel()) / timeToTarget;
 
 	// clip to max acc if too high
 	if (VMath::mag(out->linear) > npc->getMaxAcceleration()) {

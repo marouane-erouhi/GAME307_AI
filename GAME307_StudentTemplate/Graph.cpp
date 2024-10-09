@@ -66,24 +66,25 @@ std::vector<Node*> Graph::findPath(Node* startNode, Node* goalNode) {
     std::map<int, float> cost_so_far;
     cost_so_far[start] = 0.0f;
 
+    //TODO, finish this
     //while not frontier.empty
-    while (!frontier.empty()) {
-        //    current = frontier.get()
-        currentNode = frontier.top().node;
-        //    if current == goal
-        if (currentNode->getLabel() == goalNode->getLabel()) {
-            break;
-        }
+    //while (!frontier.empty()) {
+    //    //    current = frontier.get()
+    //    currentNode = frontier.top().node;
+    //    //    if current == goal
+    //    if (currentNode->getLabel() == goalNode->getLabel()) {
+    //        break;
+    //    }
 
-        std::vector<Node*> neighbours = this->neighbours(currentNode);
-        //    for next in graph.neighbours( current )
-        for (Node* next : neighbours) {
-            //new_cost = cost_so_far[current] + graph.cost(current, next)
-            new_cost = cost_so_far[currentNode->getLabel()] + cost[currentNode->getLabel()][next->getLabel()];
-            //        if next not in cost_so_far or new_cost < cost_so_far[next]
+    //    std::vector<Node*> neighbours = this->neighbours(currentNode);
+    //    //    for next in graph.neighbours( current )
+    //    for (Node* next : neighbours) {
+    //        //new_cost = cost_so_far[current] + graph.cost(current, next)
+    //        new_cost = cost_so_far[currentNode->getLabel()] + cost[currentNode->getLabel()][next->getLabel()];
+    //        //        if next not in cost_so_far or new_cost < cost_so_far[next]
 
-        }
-    }
+    //    }
+    //}
 
 
     //while not frontier.empty

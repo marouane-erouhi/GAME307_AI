@@ -39,6 +39,9 @@
     <ClCompile Include="Seek.cpp">
       <Filter>Steering\Flee/Seek</Filter>
     </ClCompile>
+    <ClCompile Include="Align.cpp">
+      <Filter>Steering\Align</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
