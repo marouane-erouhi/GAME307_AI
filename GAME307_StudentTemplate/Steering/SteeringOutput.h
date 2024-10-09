@@ -14,8 +14,14 @@ public:
 	Vec3 linear;
 	float angular;
 
-	SteeringOutput();
-	SteeringOutput( Vec3 linear_, float angular_ );
+	SteeringOutput() {
+		linear = Vec3(0, 0, 0);
+		angular = 0.0f;
+	}
+	SteeringOutput( Vec3 linear_, float angular_ ) {
+		linear = linear_;
+		angular = angular_;
+	}
 	inline const SteeringOutput operator + ( const SteeringOutput& v ) const {
 		return SteeringOutput( linear + v.linear, angular + v.angular );
 	}
