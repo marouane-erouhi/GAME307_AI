@@ -105,6 +105,9 @@
     <ClInclude Include="Pursue.h">
       <Filter>Steering</Filter>
     </ClInclude>
+    <ClInclude Include="ComgineOutput.h">
+      <Filter>Steering\Core Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">

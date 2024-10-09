@@ -34,6 +34,9 @@ public:
 	}
     {}
 
+	void setAngular(float a) {
+		angular = a;
+	}
 	void Update( float deltaTime, SteeringOutput *steering );
 };
 

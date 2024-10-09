@@ -59,6 +59,7 @@ void Scene1::OnDestroy()
 
 void Scene1::Update(const float deltaTime) {
 	// Calculate and apply any steering for npc's
+	//blinky->bo angular = 1.0f;
 	blinky->Update(deltaTime);
 
 	// Update player

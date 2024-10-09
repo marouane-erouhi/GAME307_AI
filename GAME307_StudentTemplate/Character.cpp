@@ -82,15 +82,15 @@ void Character::Update(float deltaTime)
 	SteeringOutput* steering;
 	steering = NULL;
 
+	//body->setAngular(50.0f);
 	// set the target for steering; target is used by the steerTo... functions
 	// (often the target is the Player)
 
 	// Arrive example
 	//SteeringBehaviour* steering_algo = new Arrive(body, scene->game->getPlayer(), 1.0f,3.0f, 0.1f);
 
-	//SteeringBehaviour* steering_algo = new Align(body, scene->game->getPlayer(), 1.0f, 3.0f, 0.1f);
+	SteeringBehaviour* steering_algo = new Align(body, scene->game->getPlayer(), 0.50f, 1.0f, 0.1f);
 	//SteeringBehaviour* steering_algo = new VelocityMatch(body, scene->game->getPlayer());
-	SteeringBehaviour* steering_algo = new Pursue(body, scene->game->getPlayer(), 5.0f);
 	steering = steering_algo->getSteering();
 
 	// apply the steering to the equations of motion
@@ -98,6 +98,7 @@ void Character::Update(float deltaTime)
 
 	// clean up memory
 	// (delete only those objects created in this function)
+	delete steering;
 }
 
 void Character::HandleEvents(const SDL_Event& event)
