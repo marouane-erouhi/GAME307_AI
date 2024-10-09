@@ -17,9 +17,6 @@
     <ClCompile Include="Scene1.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Steering\SteeringOutput.cpp">
-      <Filter>Steering</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerBody.cpp">
       <Filter>Bodies</Filter>
     </ClCompile>
@@ -29,19 +26,19 @@
     <ClCompile Include="Body.cpp">
       <Filter>Bodies</Filter>
     </ClCompile>
-    <ClCompile Include="Seek.cpp">
-      <Filter>Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="Flee.cpp">
-      <Filter>Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="Arrive.cpp">
-      <Filter>Steering</Filter>
-    </ClCompile>
     <ClCompile Include="Scene2.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="Arrive.cpp">
+      <Filter>Steering\Arrive</Filter>
+    </ClCompile>
+    <ClCompile Include="Flee.cpp">
+      <Filter>Steering\Flee/Seek</Filter>
+    </ClCompile>
+    <ClCompile Include="Seek.cpp">
+      <Filter>Steering\Flee/Seek</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
@@ -60,12 +57,6 @@
     <ClInclude Include="Scene1.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Steering\SteeringOutput.h">
-      <Filter>Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="SteeringBehaviour.h">
-      <Filter>Steering</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerBody.h">
       <Filter>Bodies</Filter>
     </ClInclude>
@@ -75,15 +66,6 @@
     <ClInclude Include="Body.h">
       <Filter>Bodies</Filter>
     </ClInclude>
-    <ClInclude Include="Seek.h">
-      <Filter>Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="Arrive.h">
-      <Filter>Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="Flee.h">
-      <Filter>Steering</Filter>
-    </ClInclude>
     <ClInclude Include="Scene2.h">
       <Filter>Scenes</Filter>
     </ClInclude>
@@ -91,6 +73,27 @@
       <Filter>PathFinding</Filter>
     </ClInclude>
     <ClInclude Include="Node.h">
+      <Filter>PathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="Arrive.h">
+      <Filter>Steering\Arrive</Filter>
+    </ClInclude>
+    <ClInclude Include="Flee.h">
+      <Filter>Steering\Flee/Seek</Filter>
+    </ClInclude>
+    <ClInclude Include="Seek.h">
+      <Filter>Steering\Flee/Seek</Filter>
+    </ClInclude>
+    <ClInclude Include="SteeringBehaviour.h">
+      <Filter>Steering\Core Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Steering\SteeringOutput.h">
+      <Filter>Steering\Core Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Align.h">
+      <Filter>Steering\Align</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
       <Filter>PathFinding</Filter>
     </ClInclude>
   </ItemGroup>
@@ -109,6 +112,18 @@
     </Filter>
     <Filter Include="PathFinding">
       <UniqueIdentifier>{c07e9417-289c-4e7c-a510-66ddbde9c962}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Steering\Arrive">
+      <UniqueIdentifier>{bd767322-af48-490d-95fb-5306997dbadb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Steering\Flee/Seek">
+      <UniqueIdentifier>{c78487c5-31f6-4dae-b091-30ef66b88900}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Steering\Core Classes">
+      <UniqueIdentifier>{401f4a2b-75d9-48ac-a92b-4408a3419077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Steering\Align">
+      <UniqueIdentifier>{839ee22a-de36-459c-9d7c-09ea80259dd8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

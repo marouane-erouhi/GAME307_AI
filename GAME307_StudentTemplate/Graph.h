@@ -7,6 +7,25 @@
 #include <map>
 #include <iostream>
 #include "Node.h"
+#include <queue>
+
+struct NodeAndPriority {
+public:
+
+    // member variables
+    Node* node;
+    float priority;
+
+    void print() {
+        printf("Node: %i, priority: %.2f \n", node->getLabel(), priority);
+    }
+
+    bool operator()(NodeAndPriority const& lhs, NodeAndPriority const& rhs) {
+        // make it a min queue: lowest value of priority at top of the queue
+        return lhs.priority > rhs.priority;
+    }
+};
+
 
 class Graph {
 private:

@@ -1,5 +1,9 @@
 #include "Scene2.h"
 
+void Scene2::createTile() {
+	singleTile = new Tile(Vec3(15.0f, 7.7f, 0.0f), 5.0f, 3.0f, this);
+}
+
 Scene2::Scene2(SDL_Window* sdlWindow_, GameManager* game_) {
 	window = sdlWindow_;
 	game = game_;
@@ -50,6 +54,13 @@ bool Scene2::OnCreate() {
 		std::cout << "node " << n->getLabel() << "\n";
 	}
 
+	createTile();
+
+	std:vector<Node*> path = graph->findPath(
+		sceneNodes[0], sceneNodes[4]
+	);
+
+
 	return true;
 }
 
@@ -63,6 +74,7 @@ void Scene2::Render() {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 	SDL_RenderClear(renderer);
 
+	singleTile->render();
 
 	SDL_RenderPresent(renderer);
 }
