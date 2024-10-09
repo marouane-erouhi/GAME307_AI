@@ -3,6 +3,8 @@
 #include <Flee.h>
 #include <Arrive.h>
 #include <Align.h>
+#include <VelocityMatching.h>
+
 
 bool Character::OnCreate(Scene* scene_)
 {
@@ -85,7 +87,8 @@ void Character::Update(float deltaTime)
 	// Arrive example
 	//SteeringBehaviour* steering_algo = new Arrive(body, scene->game->getPlayer(), 1.0f,3.0f, 0.1f);
 
-	SteeringBehaviour* steering_algo = new Align(body, scene->game->getPlayer(), 1.0f,3.0f, 0.1f);
+	//SteeringBehaviour* steering_algo = new Align(body, scene->game->getPlayer(), 1.0f, 3.0f, 0.1f);
+	SteeringBehaviour* steering_algo = new VelocityMatch(body, scene->game->getPlayer());
 	steering = steering_algo->getSteering();
 
 	// apply the steering to the equations of motion
