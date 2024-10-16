@@ -5,11 +5,9 @@ Scene1::Scene1(SDL_Window* sdlWindow_, GameManager* game_){
 	window = sdlWindow_;
     game = game_;
 	renderer = SDL_GetRenderer(window);
-	xAxis = 25.0f;
-	yAxis = 15.0f;
+	xAxis = 30.0f;
+	yAxis = 30.0f;
 
-	// create a NPC
-	blinky = nullptr;
 }
 
 Scene1::~Scene1() {}
@@ -25,43 +23,53 @@ bool Scene1::OnCreate() {
 	/// Turn on the SDL imaging subsystem
 	IMG_Init(IMG_INIT_PNG);
 
-	// Set player image to PacMan
 
-	SDL_Surface* image;
-	SDL_Texture* texture;
-
-	image = IMG_Load("pacman.png");
-	texture = SDL_CreateTextureFromSurface(renderer, image);
-	game->getPlayer()->setImage(image);
-	game->getPlayer()->setTexture(texture);
+	{
+		SDL_Surface* image;
+		SDL_Texture* texture;
+		image = IMG_Load("pacman.png");
+		texture = SDL_CreateTextureFromSurface(renderer, image);
+		game->getPlayer()->setImage(image);
+		game->getPlayer()->setTexture(texture);
+	}
 
 	// Set up characters, choose good values for the constructor
 	// or use the defaults, like this
-	blinky = new Character();
-	if (!blinky->OnCreate(this) || !blinky->setTextureWith("Blinky.png") )
-	{
-		return false;
-	}
+	for (int i = 0; i < numberOfBoids; i++) {
+		Character* boid = new Character();
+		boid->OnCreate(this);
+		boid->setTextureWith("Blinky.png");
+		// set locations
 
-	// end of character set ups
+		
+		/*int randX = rand() % int(xAxis - 1);
+		int randY = rand() % int(yAxis - 1);
+		*/
+
+		//boid->getBody()->setPos(Vec3(randX, randY, 15));
+		boid->getBody()->setPos(Vec3(0.4*i+1.5, 15+0.3*i,15));
+		//boid->getBody().
+		boids.push_back(boid);
+	}
 
 	return true;
 }
 
 void Scene1::OnDestroy() 
 {
-	if (blinky)
-	{
-		blinky->OnDestroy();
-		delete blinky;
+	for (Character* boid : boids) {
+		boid->OnDestroy();
+		boid = nullptr;
 	}
+	boids.clear();
 }
 
 void Scene1::Update(const float deltaTime) {
 	// Calculate and apply any steering for npc's
 	//blinky->bo angular = 1.0f;
-	blinky->Update(deltaTime);
-
+	for (Character* boid : boids) {
+		boid->Update(deltaTime);
+	}
 	// Update player
 	game->getPlayer()->Update(deltaTime);
 }
@@ -71,7 +79,9 @@ void Scene1::Render() {
 	SDL_RenderClear(renderer);
 
 	// render any npc's
-	blinky->render(0.15f);
+	for (Character* boid : boids) {
+		boid->render(0.15f);
+	}
 
 	// render the player
 	game->RenderPlayer(0.10f);
@@ -85,4 +95,8 @@ void Scene1::HandleEvents(const SDL_Event& event)
 
 	// send events to player as needed
 	game->getPlayer()->HandleEvents(event);
+}
+
+std::vector<Character*> Scene1::getCharacters() {
+	return boids;
 }

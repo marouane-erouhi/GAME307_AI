@@ -37,7 +37,7 @@ bool GameManager::OnCreate() {
 	}
 
     // select scene for specific assignment
-
+    // DEFAUALT SCENE
     currentScene = new Scene1(windowPtr->GetSDL_Window(), this);
     
     // create player

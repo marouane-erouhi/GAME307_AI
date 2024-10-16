@@ -5,7 +5,8 @@
 #include <Align.h>
 #include <VelocityMatching.h>
 #include <Pursue.h>
-
+#include "Separation.h"
+#include <Scene1.h>
 
 bool Character::OnCreate(Scene* scene_)
 {
@@ -89,16 +90,22 @@ void Character::Update(float deltaTime)
 	// Arrive example
 	//SteeringBehaviour* steering_algo = new Arrive(body, scene->game->getPlayer(), 1.0f,3.0f, 0.1f);
 
-	SteeringBehaviour* steering_algo = new Align(body, scene->game->getPlayer(), 0.50f, 1.0f, 0.1f);
+	//SteeringBehaviour* steering_algo = new Align(body, scene->game->getPlayer(), 0.50f, 1.0f, 0.1f);
+
+	auto boids = ((Scene1*)scene)->getCharacters();
+	std::vector<const Body*> bodies;
+	for (auto boid : boids) {
+		if (boid->getBody() == body)	continue;
+		bodies.push_back(boid->getBody());
+	}
+
+	SteeringBehaviour* steering_algo = new Separation(body, bodies, 2.0f, 0.5f);
 	//SteeringBehaviour* steering_algo = new VelocityMatch(body, scene->game->getPlayer());
 	steering = steering_algo->getSteering();
 
-	// apply the steering to the equations of motion
 	body->Update(deltaTime, steering);
-
-	// clean up memory
-	// (delete only those objects created in this function)
 	delete steering;
+	handleEdges();
 }
 
 void Character::HandleEvents(const SDL_Event& event)
@@ -130,4 +137,21 @@ void Character::render(float scale) const
 
 	SDL_RenderCopyEx(renderer, body->getTexture(), nullptr, &square,
 		orientation, nullptr, SDL_FLIP_NONE);
+}
+
+void Character::handleEdges() {
+	Vec3 pos = body->getPos();
+	if (pos.x > scene->getxAxis()) {
+		pos.x = 0;
+	}
+	if (pos.x < 0) {
+		pos.x = scene->getxAxis();
+	}
+	if (pos.y > scene->getyAxis()) {
+		pos.y = 0;
+	}
+	if (pos.y < 0) {
+		pos.y = scene->getyAxis();
+	}
+	body->setPos(Vec3(pos));
 }

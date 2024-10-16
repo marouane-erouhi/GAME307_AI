@@ -6,7 +6,6 @@
 #include "Scene.h"
 #include "Character.h"
 
-
 using namespace MATH;
 class Scene1 : public Scene {
 private:
@@ -17,7 +16,10 @@ private:
 	Matrix4 projectionMatrix;
     Matrix4     inverseProjection;
 
-	Character* blinky;
+	//Character* blinky;
+
+	std::vector<Character*> boids;
+	int numberOfBoids = 10;
 
 public:
 	Scene1(SDL_Window* sdlWindow, GameManager* game_);
@@ -32,6 +34,8 @@ public:
 	SDL_Window* getWindow() { return window; }
     Matrix4 getProjectionMatrix() { return projectionMatrix; }
 	Matrix4 getInverseMatrix() { return inverseProjection; }
+
+	std::vector<Character*> getCharacters();
 };
 
 #endif
