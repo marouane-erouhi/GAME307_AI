@@ -42,6 +42,7 @@
     <ClCompile Include="Align.cpp">
       <Filter>Steering\Align</Filter>
     </ClCompile>
+    <ClCompile Include="Boids.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
@@ -109,6 +110,9 @@
       <Filter>Steering\Core Classes</Filter>
     </ClInclude>
     <ClInclude Include="Separation.h">
+      <Filter>Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="Boids.h">
       <Filter>Steering</Filter>
     </ClInclude>
   </ItemGroup>
