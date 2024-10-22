@@ -39,15 +39,17 @@ bool Scene1::OnCreate() {
 		Character* boid = new Character();
 		boid->OnCreate(this);
 		boid->setTextureWith("Blinky.png");
+		//boid.ma
 		// set locations
 
 		
 		/*int randX = rand() % int(xAxis - 1);
 		int randY = rand() % int(yAxis - 1);
 		*/
-
+		float r1 = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / xAxis));
+		float r2 = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / yAxis));
 		//boid->getBody()->setPos(Vec3(randX, randY, 15));
-		boid->getBody()->setPos(Vec3(0.4*i+1.5, 15+0.3*i,15));
+		boid->getBody()->setPos(Vec3(r1, r2,15));
 		//boid->getBody().
 		boids.push_back(boid);
 	}
@@ -94,6 +96,9 @@ void Scene1::HandleEvents(const SDL_Event& event)
 	// send events to npc's as needed
 
 	// send events to player as needed
+	for (auto boid : boids) {
+		boid->HandleEvents(event);
+	}
 	game->getPlayer()->HandleEvents(event);
 }
 

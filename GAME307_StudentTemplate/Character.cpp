@@ -5,8 +5,18 @@
 #include <Align.h>
 #include <VelocityMatching.h>
 #include <Pursue.h>
-#include "Separation.h"
 #include <Scene1.h>
+#include "Seperation.h"
+#include "Cohesion.h"
+
+MATH::Vec3 randomVec() {
+	float r1 = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX));
+	return VMath::normalize(Vec3(
+		static_cast <float> (rand()) / (static_cast <float> (RAND_MAX)),
+		static_cast <float> (rand()) / (static_cast <float> (RAND_MAX)),
+		static_cast <float> (rand()) / (static_cast <float> (RAND_MAX))
+	));
+}
 
 bool Character::OnCreate(Scene* scene_)
 {
@@ -24,7 +34,7 @@ bool Character::OnCreate(Scene* scene_)
 		float maxRotation = 2.0f;
 		float maxAngular = 10.0f;
 		body = new KinematicBody(
-			Vec3(1.0f, 5.0f, 0), Vec3(0, 0, 0), Vec3(0, 0, 0), 1.0f,
+			Vec3(1.0f, 5.0f, 0), randomVec(), Vec3(0, 0, 0), 1.0f,
 			radius,
 			orientation,
 			rotation,
@@ -92,18 +102,43 @@ void Character::Update(float deltaTime)
 
 	//SteeringBehaviour* steering_algo = new Align(body, scene->game->getPlayer(), 0.50f, 1.0f, 0.1f);
 
-	auto boids = ((Scene1*)scene)->getCharacters();
+	Scene1* scene1 = ((Scene1*)scene);
+
+	auto boids = scene1->getCharacters();
+	auto player = scene1->game->getPlayer();
 	std::vector<const Body*> bodies;
 	for (auto boid : boids) {
 		if (boid->getBody() == body)	continue;
 		bodies.push_back(boid->getBody());
 	}
 
-	SteeringBehaviour* steering_algo = new Separation(body, bodies, 2.0f, 0.5f);
 	//SteeringBehaviour* steering_algo = new VelocityMatch(body, scene->game->getPlayer());
-	steering = steering_algo->getSteering();
+	/*SteeringBehaviour* steering_algo = new Separation(body, bodies, 2.0f, 0.5f);
+	steering = steering_algo->getSteering();*/
 
-	body->Update(deltaTime, steering);
+	for (auto target : bodies) {
+		Separation* seperation = new Separation(body, target, sep_thresh, 0.001f);
+		body->Update(deltaTime, seperation->getSteering());
+
+		Alignment* alignment = new Alignment(body, target, 1.0f, 10.0f);
+		body->Update(deltaTime, alignment->getSteering());
+
+		Cohesion* cohesion = new Cohesion(body,target, coh_weight);
+		body->Update(deltaTime, cohesion->getSteering());
+
+		delete seperation;
+		delete alignment;
+		delete cohesion;
+	}
+
+	//SteeringOutput* combined = new SteeringOutput();
+	//combined->linear +=		seperationSteering->linear ;//* 0.33;
+	//combined->linear +=		alignmentSteering->linear ;//* 0.33;
+	//combined->linear +=		cohesionSteering->linear ;//* 0.33;
+
+	//body->Update(deltaTime, combined);
+
+
 	delete steering;
 	handleEdges();
 }
@@ -111,6 +146,32 @@ void Character::Update(float deltaTime)
 void Character::HandleEvents(const SDL_Event& event)
 {
 	// handle events here, if needed
+	if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {
+		switch (event.key.keysym.scancode) {
+		case SDL_SCANCODE_Y:
+			//sep_thresh, sep_weight
+			sep_thresh += 0.1f;
+			printf("%f\n",sep_thresh);
+			break;
+		case SDL_SCANCODE_U:
+			//sep_thresh, sep_weight
+			sep_weight += 1.1f;
+			printf("%f\n", sep_weight);
+			break;
+		case SDL_SCANCODE_I:
+			//sep_thresh, sep_weight
+			all_weight += 0.1f;
+			printf("%f\n", all_weight);
+			break;
+		case SDL_SCANCODE_O:
+			//sep_thresh, sep_weight
+			coh_weight += 0.01f;
+			printf("%f\n", coh_weight);
+			break;
+
+
+		}
+	}
 }
 
 void Character::render(float scale) const

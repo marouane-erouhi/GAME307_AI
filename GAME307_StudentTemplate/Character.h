@@ -14,6 +14,11 @@ private:
 	class KinematicBody* body;
 	class Scene* scene;
 
+	float sep_thresh = 0.7f;
+	float sep_weight = 1.0f;
+	float all_weight = 1.0f;
+	float coh_weight = 1.0f;
+
 public:
 	Character()
 	{

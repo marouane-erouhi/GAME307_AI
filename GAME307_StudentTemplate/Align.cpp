@@ -1,16 +1,16 @@
 //#include "Align.h"
 //#include <math.h>
-//
-//double mapToRange(double r) {
-//    r = fmod(r, 2 * M_PI);
-//    if (r < -M_PI) {
-//        r += 2 * M_PI;
-//    }
-//    if (r >= M_PI) {
-//        r -= 2 * M_PI;
-//    }
-//    return r;
-//}
+////
+////double mapToRange(double r) {
+////    r = fmod(r, 2 * M_PI);
+////    if (r < -M_PI) {
+////        r += 2 * M_PI;
+////    }
+////    if (r >= M_PI) {
+////        r -= 2 * M_PI;
+////    }
+////    return r;
+////}
 //
 //Align::Align(const Body* npc_, const Body* target_, float targetRadius_, float slowRadius_, float timeToTraget_) {
 //    npc = npc_;

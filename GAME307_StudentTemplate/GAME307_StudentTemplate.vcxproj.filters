@@ -42,7 +42,6 @@
     <ClCompile Include="Align.cpp">
       <Filter>Steering\Align</Filter>
     </ClCompile>
-    <ClCompile Include="Boids.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
@@ -109,11 +108,11 @@
     <ClInclude Include="ComgineOutput.h">
       <Filter>Steering\Core Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Separation.h">
-      <Filter>Steering</Filter>
+    <ClInclude Include="Cohesion.h">
+      <Filter>Steering\Cohesion</Filter>
     </ClInclude>
-    <ClInclude Include="Boids.h">
-      <Filter>Steering</Filter>
+    <ClInclude Include="Seperation.h">
+      <Filter>Steering\Seperation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +142,12 @@
     </Filter>
     <Filter Include="Steering\Align">
       <UniqueIdentifier>{839ee22a-de36-459c-9d7c-09ea80259dd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Steering\Cohesion">
+      <UniqueIdentifier>{1c49487f-c823-4054-b64d-09c1cd426f22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Steering\Seperation">
+      <UniqueIdentifier>{f332b631-abee-43ac-b033-533c718fe024}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
